@@ -5,11 +5,15 @@ $ProgressPreference = 'SilentlyContinue'
 $videoURL = "https://github.com/ShatteredDisk/rickroll/raw/refs/heads/master/rickroll.mp4"
 $savePath = "$env:USERPROFILE\rickroll.mp4"
 
-# 下載 MP4 文件
-Write-Host "Downloading video..."
-Invoke-WebRequest -Uri $videoURL -OutFile $savePath
-
-Write-Host "Video downloaded to $savePath"
+# 檢查 MP4 文件是否已經存在
+if (Test-Path $savePath) {
+    Write-Host "Video already exists at $savePath. Skipping download."
+} else {
+    # 下載 MP4 文件
+    Write-Host "Downloading video..."
+    Invoke-WebRequest -Uri $videoURL -OutFile $savePath
+    Write-Host "Video downloaded to $savePath"
+}
 
 # 啟動並播放視頻（使用預設媒體播放器）
 Write-Host "Launching default media player..."
