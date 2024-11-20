@@ -1,2 +1,2 @@
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass  
 ./rickroll.ps1
